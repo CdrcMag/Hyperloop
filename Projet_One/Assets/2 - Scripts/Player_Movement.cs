@@ -14,6 +14,7 @@ public class Player_Movement : MonoBehaviour
     public Manager_Score mScore;
     public GameObject explosionPrefab;
     public List<Transform> basePositions;
+    public GameObject movingParticles;
 
     private bool moving = false;
 
@@ -169,17 +170,21 @@ public class Player_Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) && currentPositionY > 0)
         {
+            SpawnMovingParticles(Sens.Haut);
             currentPositionY -= 1;
             StartCoroutine(IMove());
         }
         if (Input.GetKeyDown(KeyCode.S) && currentPositionY < 2)
         {
+            SpawnMovingParticles(Sens.Bas);
             currentPositionY += 1;
             StartCoroutine(IMove());
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            SpawnMovingParticles(Sens.Gauche);
+
             currentPositionX -= 1;
             if (currentPositionX == -1)
             {
@@ -195,6 +200,8 @@ public class Player_Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
+            SpawnMovingParticles(Sens.Droite);
+
             currentPositionX += 1;
             if (currentPositionX == 3)
             {
@@ -266,40 +273,83 @@ public class Player_Movement : MonoBehaviour
         {
             if(collision.GetComponent<SpriteRenderer>().color == follower.currentColor)
             {
+                //Destroys other object
                 Destroy(collision.gameObject);
+
+                //Handles the score
                 mScore.AddInARow(1);
                 mScore.AddScore();
 
                 //Sound
                 Manager_Audio.Instance.PlayFx(0, 1);
-                
+
                 //Particles
-                GameObject a = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                ParticleSystem ps = a.GetComponent<ParticleSystem>();
-                var col = ps.colorOverLifetime;
-                col.enabled = true;
+                SpawnFunkyParticles();
 
-                //Color handling
-                Gradient grad = new Gradient();
-                grad.SetKeys(
-                    new GradientColorKey[]
-                      {
-                      new GradientColorKey(Color.blue, 0.0f),
-                      new GradientColorKey(Color.red, 1.0f) }, 
-                      new GradientAlphaKey[] {
-                      new GradientAlphaKey(1.0f, 0.0f),
-                      new GradientAlphaKey(1.0f, 0.8f),
-                      new GradientAlphaKey(0.0f, 1.0f)
-                      });
-
-                col.color = grad;
-
-                Destroy(a, 0.5f);
+                //Camera Shake
                 CameraShake.Instance.Shake(0.1f, 0.2f);
                 
 
             }
         }
+
+        if(collision.tag == "Healer")
+        {
+            //Destroys other object
+            Destroy(collision.gameObject);
+
+            //Handles health
+            Health.Instance.AddHealth(1);
+
+            //and camera shake
+            CameraShake.Instance.Shake(0.1f, 1f);
+
+            //Spawns funky particles
+            SpawnFunkyParticles();
+
+        }
+    }
+
+    private void SpawnFunkyParticles()
+    {
+        GameObject a = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        ParticleSystem ps = a.GetComponent<ParticleSystem>();
+        var col = ps.colorOverLifetime;
+        col.enabled = true;
+
+        //Color handling
+        Gradient grad = new Gradient();
+        grad.SetKeys(
+            new GradientColorKey[]
+              {
+                      new GradientColorKey(Color.blue, 0.0f),
+                      new GradientColorKey(Color.red, 1.0f) },
+              new GradientAlphaKey[] {
+                      new GradientAlphaKey(1.0f, 0.0f),
+                      new GradientAlphaKey(1.0f, 0.8f),
+                      new GradientAlphaKey(0.0f, 1.0f)
+              });
+
+        col.color = grad;
+
+        Destroy(a, 0.5f);
+    }
+
+    public enum Sens { Gauche, Droite, Haut, Bas};
+
+    private void SpawnMovingParticles(Sens s)
+    {
+        //0 = droite
+        int sens = 0;
+        if (s == Sens.Droite) sens = 180;
+        if (s == Sens.Gauche) sens = 0;
+        if (s == Sens.Haut) sens = 90;
+        if (s == Sens.Bas) sens = -90;
+
+        Quaternion q = Quaternion.Euler(sens, 90, 0);
+
+        GameObject particles = Instantiate(movingParticles, transform.position, q);
+        Destroy(particles, 1f);
     }
 
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fall
   - Fix
+  - Healer
   layers:
   - Default
   - TransparentFX

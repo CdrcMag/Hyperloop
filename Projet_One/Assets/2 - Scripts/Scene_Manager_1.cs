@@ -15,6 +15,7 @@ public class Scene_Manager_1 : MonoBehaviour
     public Transform objects;
 
     public GameObject objPrefab;
+    public GameObject healerPrefab;
 
     public bool spawning = true;
 
@@ -43,13 +44,23 @@ public class Scene_Manager_1 : MonoBehaviour
 
     private void SpawnFaller()
     {
-        GameObject a = Instantiate(objPrefab, spawnPositions[Random.Range(0, 3)], Quaternion.identity, objects);
-        
-        a.GetComponent<SpriteRenderer>().color = colors[Random.Range(0, 3)];
-        a.GetComponent<Faller>().speed = fallerSpeed;
-    }
+        int rand = Random.Range(0, 20);
+        GameObject a;
 
-    //Méthode pour changer de couleur les carrés fixes
+        if(rand > 1)
+        {
+            a = Instantiate(objPrefab, spawnPositions[Random.Range(0, 3)], Quaternion.identity, objects);
+            a.GetComponent<SpriteRenderer>().color = colors[Random.Range(0, 3)];
+            a.GetComponent<Faller>().speed = fallerSpeed;
+        }   
+        else
+        {
+            a = Instantiate(healerPrefab, spawnPositions[Random.Range(0, 3)], Quaternion.identity, objects);
+        }
+            
+
+        
+    }
 
     public Transform[] carres;
 

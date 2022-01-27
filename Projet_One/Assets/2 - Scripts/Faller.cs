@@ -13,8 +13,6 @@ public class Faller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 10);
 
-       
-
     }
 
     private void Start()

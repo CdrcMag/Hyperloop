@@ -20,12 +20,17 @@ public class Health : MonoBehaviour
 
     public void AddHealth(int val)
     {
-        vie += val;
+        if(vie + val <= 3)
+        {
+            vie += val;
+        }
+        
         UpdateHealthBar();
     }
 
     public void RemoveHealth(int val)
     {
+        CameraShake.Instance.Shake(0.2f, 0.6f);
         vie -= val;
         UpdateHealthBar();
     }

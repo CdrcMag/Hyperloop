@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
 
     private IEnumerator IWait(float t)
     {
-        TransitionSystem.Instance.OpenCurtain();
+        //TransitionSystem.Instance.OpenCurtain();
         yield return new WaitForSeconds(t);
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }

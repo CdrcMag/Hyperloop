@@ -29,12 +29,18 @@ public class Transition2 : MonoBehaviour
             carres.Add(t);
         }
 
-        StartCoroutine(IReduce());
+        
 
+    }
+
+    private void Start()
+    {
+        StartCoroutine(IReduce());
     }
 
     IEnumerator IAugment()
     {
+        parent.gameObject.SetActive(true);
         SetStates(false);
 
         yield return new WaitForSeconds(0f);
@@ -49,6 +55,7 @@ public class Transition2 : MonoBehaviour
 
     IEnumerator IReduce()
     {
+        parent.gameObject.SetActive(true);
         SetStates(true);
 
         yield return new WaitForSeconds(0f);

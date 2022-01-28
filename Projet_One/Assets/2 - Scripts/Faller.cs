@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Faller : MonoBehaviour
 {
     private Rigidbody2D rb;
     private ParticleSystem ps;
+    private Light2D m_light;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 10);
-
+        m_light = GetComponentInChildren<Light2D>();
     }
 
     private void Start()
@@ -35,6 +37,8 @@ public class Faller : MonoBehaviour
               });
 
         mainColor.color = grad;
+
+        m_light.color = GetComponent<SpriteRenderer>().color;
     }
 
     [HideInInspector] public float speed = 3;

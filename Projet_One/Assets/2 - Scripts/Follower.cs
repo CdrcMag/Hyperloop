@@ -30,6 +30,9 @@ public class Follower : MonoBehaviour
         {
             currentColor = collision.GetComponent<SpriteRenderer>().color;
             //SetPlayerColor(currentColor);
+
+            if(collision.GetComponent<Animator>() != null)
+                collision.GetComponent<Animator>().SetTrigger("Turn");
         }
     }
 

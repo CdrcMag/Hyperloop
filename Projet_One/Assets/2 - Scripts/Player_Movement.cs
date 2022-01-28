@@ -288,6 +288,9 @@ public class Player_Movement : MonoBehaviour
 
                 //Camera Shake
                 CameraShake.Instance.Shake(0.1f, 0.2f);
+
+                //Changes background color
+                ColorChanger.Instance.ChangeColor();
                 
 
             }
@@ -306,6 +309,9 @@ public class Player_Movement : MonoBehaviour
 
             //Spawns funky particles
             SpawnFunkyParticles();
+
+            //Changes background color
+            if(ColorChanger.Instance) ColorChanger.Instance.ChangeColor();
 
         }
     }

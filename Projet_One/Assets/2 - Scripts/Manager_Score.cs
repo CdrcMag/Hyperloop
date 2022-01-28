@@ -1,21 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class Manager_Score : MonoBehaviour
 {
     public TextMeshProUGUI tScore;
     public TextMeshProUGUI tMulti;
     public TextMeshProUGUI tRow;
+
+    public GameObject tPopUpPrefab;
+    private Transform player;
+
     public int score = 0;
 
     public int inARow = 0;
     public int multiplier = 1;
 
+    [Header("Pop-Up settings")]
+    [SerializeField] private Vector2 offset;
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player").transform;
+    }
+
     public void AddScore()
     {
-        score += 100 * multiplier;
+        int finalScore = 100 * multiplier;
+        score += finalScore;
+
+        PopUp(finalScore);
 
         StartCoroutine(ISizeText());
         tScore.text = score.ToString();
@@ -71,4 +85,16 @@ public class Manager_Score : MonoBehaviour
 
     }
 
+    private void PopUp(int val)
+    {
+        Vector2 pos = (Vector2)player.position + offset;
+
+        //Rotation
+        Quaternion rotation = Quaternion.Euler(0, 0, -10);
+
+        GameObject pop = Instantiate(tPopUpPrefab, pos, rotation);
+
+        pop.GetComponentInChildren<TextMeshPro>().text = $"+{val}";
+        Destroy(pop, 3f);
+    }
 }

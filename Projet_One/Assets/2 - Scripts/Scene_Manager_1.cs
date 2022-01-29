@@ -9,15 +9,20 @@ public class Scene_Manager_1 : MonoBehaviour
     public Color32[] colors = new Color32[3];
 
     private float cpt = 0;
-    public float timeBetweenSpawns = 1.5f;
-    public float fallerSpeed = 5f;
+    
 
+    [Header("Where to spawn objects")]
     public Transform objects;
 
+    [Header("Prefabs")]
     public GameObject objPrefab;
     public GameObject healerPrefab;
 
+    [Header("Settings")]
     public bool spawning = true;
+    public float timeBetweenSpawns = 1.5f;
+    public float fallerSpeed = 5f;
+    public int chanceToSpawnHealer = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -44,10 +49,10 @@ public class Scene_Manager_1 : MonoBehaviour
 
     private void SpawnFaller()
     {
-        int rand = Random.Range(0, 20);
+        int rand = Random.Range(1, 101);
         GameObject a;
 
-        if(rand > 1)
+        if(rand > chanceToSpawnHealer)
         {
             a = Instantiate(objPrefab, spawnPositions[Random.Range(0, 3)], Quaternion.identity, objects);
             a.GetComponent<SpriteRenderer>().color = colors[Random.Range(0, 3)];
@@ -62,6 +67,7 @@ public class Scene_Manager_1 : MonoBehaviour
         
     }
 
+    [Header("Grille de déplacement")]
     public Transform[] carres;
 
     //0 = red, 1 = green, 2 = blue//
@@ -72,7 +78,6 @@ public class Scene_Manager_1 : MonoBehaviour
     [ContextMenu("Set Colors")]
     public void SetCarresColors()
     {
-        print(carres.Length);
         for (int i = 0; i < carres.Length; i++)
         {
             if (field_1[i] == 0) carres[i].GetComponent<SpriteRenderer>().color = colors[0];

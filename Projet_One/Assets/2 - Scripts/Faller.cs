@@ -15,6 +15,8 @@ public class Faller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 10);
         m_light = GetComponentInChildren<Light2D>();
+
+        SetHealerColor();
     }
 
     private void Start()
@@ -48,4 +50,11 @@ public class Faller : MonoBehaviour
         rb.MovePosition(rb.position + Vector2.down * speed * Time.deltaTime);
     }
 
+
+    private void SetHealerColor()
+    {
+        Scene_Manager_1 manager = GameObject.Find("Game Manager").GetComponent<Scene_Manager_1>();
+
+        if (manager) GetComponent<SpriteRenderer>().color = manager.healerColor;
+    }
 }

@@ -8,6 +8,8 @@ public class Scene_Manager_1 : MonoBehaviour
     private Vector2[] spawnPositions = new Vector2[3];
     public Color32[] colors = new Color32[3];
 
+    public Color32 healerColor;
+
     private float cpt = 0;
     
 
@@ -72,17 +74,26 @@ public class Scene_Manager_1 : MonoBehaviour
 
     //0 = red, 1 = green, 2 = blue//
     //----------------------A1,A2,A3,B1,B2,B3,C1,C2,C3
-    private int[] field_1 = {0,2,1, 1,0,2, 2,1,0};
-    private int[] field_2 = {0,0,0, 0,0,0, 0,0,0};
+    [Header("Colors sets")]
+    public int colorTabID = 0;
+    public int[] field_0 = { 0, 2, 1, 1, 0, 2, 2, 1, 0 };
+    public int[] field_1 = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public int[] field_2 = { 2, 1, 0, 0, 2, 1, 1, 0, 0 };
+
 
     [ContextMenu("Set Colors")]
     public void SetCarresColors()
     {
+        List<int[]> fields = new List<int[]>();
+        //fields.Add(field_0);
+        //fields.Add(field_1);
+        //fields.Add(field_2);
+
         for (int i = 0; i < carres.Length; i++)
         {
-            if (field_1[i] == 0) carres[i].GetComponent<SpriteRenderer>().color = colors[0];
-            if (field_1[i] == 1) carres[i].GetComponent<SpriteRenderer>().color = colors[1];
-            if (field_1[i] == 2) carres[i].GetComponent<SpriteRenderer>().color = colors[2];
+            if (fields[colorTabID][i] == 0) carres[i].GetComponent<SpriteRenderer>().color = colors[0];
+            if (fields[colorTabID][i] == 1) carres[i].GetComponent<SpriteRenderer>().color = colors[1];
+            if (fields[colorTabID][i] == 2) carres[i].GetComponent<SpriteRenderer>().color = colors[2];
         }
     }
 

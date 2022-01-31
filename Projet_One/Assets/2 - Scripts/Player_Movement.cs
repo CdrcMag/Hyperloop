@@ -15,6 +15,7 @@ public class Player_Movement : MonoBehaviour
     public GameObject explosionPrefab;
     public List<Transform> basePositions;
     public GameObject movingParticles;
+    public Scene_Manager_1 scene_manager;
 
     private bool moving = false;
 
@@ -313,6 +314,24 @@ public class Player_Movement : MonoBehaviour
             //Changes background color
             if(ColorChanger.Instance) ColorChanger.Instance.ChangeColor();
 
+        }
+
+        if(collision.tag == "ColorChanger")
+        {
+            //Destroys other object
+            Destroy(collision.gameObject);
+
+            //and camera shake
+            CameraShake.Instance.Shake(0.1f, 1f);
+
+            //Spawns funky particles
+            SpawnFunkyParticles();
+
+            //Changes background color
+            if (ColorChanger.Instance) ColorChanger.Instance.ChangeColor();
+
+            //Changes all fixed squares colors
+            scene_manager.SetCarresColors();
         }
     }
 

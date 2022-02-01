@@ -13,6 +13,7 @@ public class Player_Movement : MonoBehaviour
     public Follower follower;
     public Manager_Score mScore;
     public GameObject explosionPrefab;
+    public GameObject explosionPrefabColored;
     public List<Transform> basePositions;
     public GameObject movingParticles;
     public Scene_Manager_1 scene_manager;
@@ -325,14 +326,25 @@ public class Player_Movement : MonoBehaviour
             CameraShake.Instance.Shake(0.1f, 1f);
 
             //Spawns funky particles
-            SpawnFunkyParticles();
+            SpawnSpecificParticles();
 
             //Changes background color
             if (ColorChanger.Instance) ColorChanger.Instance.ChangeColor();
 
             //Changes all fixed squares colors
             scene_manager.SetCarresColors();
+
+            //Add score
+            mScore.AddOneShotScore(1000);
+            
         }
+    }
+
+    private void SpawnSpecificParticles()
+    {
+        GameObject a = Instantiate(explosionPrefabColored, transform.position, Quaternion.identity);
+        Destroy(a, 5f);
+
     }
 
     private void SpawnFunkyParticles()

@@ -60,6 +60,15 @@ public class Manager_Score : MonoBehaviour
         tMulti.text = $"X{multiplier}";
     }
 
+    public void AddOneShotScore(int val)
+    {
+        score += val;
+        PopUp(val);
+
+        StartCoroutine(ISizeText());
+        tScore.text = score.ToString();
+    }
+
     IEnumerator ISizeText()
     {
         float targetSize = 140;

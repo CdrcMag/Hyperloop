@@ -33,6 +33,13 @@ public class Manager_Score : MonoBehaviour
 
         StartCoroutine(ISizeText());
         tScore.text = score.ToString();
+
+        //Handles highest score
+        if(score > PlayerPrefs.GetInt("BestScore"))
+        {
+            PlayerPrefs.SetInt("BestScore", score);
+        }
+
     }
 
     public void AddInARow(int val)

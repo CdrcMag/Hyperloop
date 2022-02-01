@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public int frameRate;
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = frameRate;
         QualitySettings.vSyncCount = 0;
     }
 }

@@ -13,6 +13,9 @@ public class Transition2 : MonoBehaviour
     public float speed;
     public float ecart;
 
+    //[Header("Colors")]
+    //public Color32[] colors;
+
     public void Augment()
     {
         StartCoroutine(IAugment());
@@ -28,6 +31,9 @@ public class Transition2 : MonoBehaviour
         {
             carres.Add(t);
         }
+
+        //for (int i = 0; i < carres.Count; i++)
+        //    carres[i].GetComponent<SpriteRenderer>().color = colors[Random.Range(0, colors.Length)];
 
         
 

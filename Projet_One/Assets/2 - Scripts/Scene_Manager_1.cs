@@ -171,6 +171,8 @@ public class Scene_Manager_1 : MonoBehaviour
             if (fields[colorTabID][i] == 0) carres[i].GetComponent<SpriteRenderer>().color = colors[0];
             if (fields[colorTabID][i] == 1) carres[i].GetComponent<SpriteRenderer>().color = colors[1];
             if (fields[colorTabID][i] == 2) carres[i].GetComponent<SpriteRenderer>().color = colors[2];
+
+            carres[i].GetComponent<Animator>().SetTrigger("Turn");
         }
     }
 

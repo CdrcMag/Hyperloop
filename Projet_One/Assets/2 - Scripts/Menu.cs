@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Menu : MonoBehaviour
 {
-  public void LauncheGame()
+    public TextMeshProUGUI tBestScore;
+
+    private void Awake()
+    {
+        tBestScore.text = $"HIGHEST SCORE <br> {PlayerPrefs.GetInt("BestScore").ToString()}";
+    }
+
+
+    public void LauncheGame()
     {
         StartCoroutine(IWait(2));
     }

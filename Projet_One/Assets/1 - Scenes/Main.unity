@@ -1057,7 +1057,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1449902225
 GameObject:
@@ -1723,7 +1723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1009740911424049435, guid: 4bbd8eb915da0d04c9db7d140451daf7, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1009740911424049435, guid: 4bbd8eb915da0d04c9db7d140451daf7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1743,15 +1743,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1009740911424049435, guid: 4bbd8eb915da0d04c9db7d140451daf7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1009740911424049435, guid: 4bbd8eb915da0d04c9db7d140451daf7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1009740911424049435, guid: 4bbd8eb915da0d04c9db7d140451daf7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1009740911424049435, guid: 4bbd8eb915da0d04c9db7d140451daf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1814,6 +1814,9 @@ MonoBehaviour:
   healerColor:
     serializedVersion: 2
     rgba: 4291363071
+  colorChangerColor:
+    serializedVersion: 2
+    rgba: 4279689422
   objects: {fileID: 597481872}
   objPrefab: {fileID: 542015768644212276, guid: 7ed177699631c7c419cc3b9731e60d2e, type: 3}
   healerPrefab: {fileID: 542015768644212276, guid: 1aa3cb32ea298a54d870611a34380f9b, type: 3}
@@ -1822,7 +1825,7 @@ MonoBehaviour:
   timeBetweenSpawns: 1.5
   fallerSpeed: 3
   chanceToSpawnHealer: 5
-  chanceToColorChanger: 30
+  chanceToColorChanger: 40
   carres:
   - {fileID: 183557378}
   - {fileID: 724670075}
@@ -2629,7 +2632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6835734131034183972, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6835734131034183972, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: m_LocalScale.x

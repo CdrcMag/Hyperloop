@@ -8,7 +8,9 @@ public class Scene_Manager_1 : MonoBehaviour
     private Vector2[] spawnPositions = new Vector2[3];
     public Color32[] colors = new Color32[3];
 
+    [Header("Faller colors")]
     public Color32 healerColor;
+    public Color32 colorChangerColor;
 
     private float cpt = 0;
     
@@ -55,12 +57,15 @@ public class Scene_Manager_1 : MonoBehaviour
 
     private void SpawnFaller()
     {
+        //Génère un entier aléatoire
         int rand = Random.Range(1, 101);
         
+        //Ajoute toutes les variables de chances d'apparition dans une liste
         List<int> chances = new List<int>();
         chances.Add(chanceToSpawnHealer);
         chances.Add(chanceToColorChanger);
         
+        //Ordonne la liste de façon croissante
         chances.Sort();
 
         //Imbriqué du plus de chance de spawn au moins de chance
@@ -87,6 +92,17 @@ public class Scene_Manager_1 : MonoBehaviour
         {
             Spawn_Normal();
         }
+        /* random = 10; ChanceA = 8; ChanceB = 20;
+         * SI(random <= ChanceA) ALORS SpawnA();
+         * SI(random <= ChanceB) ALORS SpawnB();
+         * 
+         * Problème : SI random < ChanceA et ChanceB, lequel faire spawn ? => Premier dans la liste des SI, les chances sont alors faussées
+         * 
+         * Solution : Imbrication des chances.
+         * Organise les chances du plus petit au plus grand, et vérifie toutes les cases de la FIN au DEBUT, et fait apparaitre l'objet correspondant 
+         * à la valeur dans la liste.
+         * 
+         */
 
         
     }
@@ -108,7 +124,15 @@ public class Scene_Manager_1 : MonoBehaviour
     private void Spawn_ColorChanger()
     {
         GameObject a;
-        a = Instantiate(colorChangerPrefab, spawnPositions[Random.Range(0, 3)], Quaternion.identity, objects);
+
+        Vector2[] pos = new Vector2[2];
+
+        pos[0] = new Vector2(-0.75f, 6);
+        pos[1] = new Vector2(0.75f, 6);
+
+        a = Instantiate(colorChangerPrefab, pos[Random.Range(0, 2)], Quaternion.identity, objects);
+        a.GetComponent<Faller>().speed = fallerSpeed * 0.6f;
+        a.GetComponent<SpriteRenderer>().color = colorChangerColor;
 
     }
 
@@ -125,6 +149,7 @@ public class Scene_Manager_1 : MonoBehaviour
     public int[] field_1 = { 1, 0, 2, 2, 1, 0, 0, 2, 1 };
     public int[] field_2 = { 2, 1, 0, 0, 2, 1, 1, 0, 0 };
 
+    private int previousId = 0;
 
     [ContextMenu("Set Colors")]
     public void SetCarresColors()
@@ -133,16 +158,31 @@ public class Scene_Manager_1 : MonoBehaviour
         fields.Add(field_0);
         fields.Add(field_1);
         fields.Add(field_2);
-        //Empecher de selectionner le pattern déjà en cours
 
-        colorTabID = Random.Range(0, 3);
+        //Assigne un index aléatoire
+        colorTabID = RandomIndex(fields);
 
+        //Stock le dernier index
+        previousId = colorTabID;
+
+        //Assigne les couleurs
         for (int i = 0; i < carres.Length; i++)
         {
             if (fields[colorTabID][i] == 0) carres[i].GetComponent<SpriteRenderer>().color = colors[0];
             if (fields[colorTabID][i] == 1) carres[i].GetComponent<SpriteRenderer>().color = colors[1];
             if (fields[colorTabID][i] == 2) carres[i].GetComponent<SpriteRenderer>().color = colors[2];
         }
+    }
+
+    private int RandomIndex(List<int[]> f)
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            int rand = Random.Range(0, f.Count);
+            if (rand != previousId) return rand;
+        }
+
+        return 0;
     }
 
 }

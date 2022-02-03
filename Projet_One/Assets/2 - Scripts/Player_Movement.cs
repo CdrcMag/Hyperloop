@@ -17,6 +17,7 @@ public class Player_Movement : MonoBehaviour
     public List<Transform> basePositions;
     public GameObject movingParticles;
     public Scene_Manager_1 scene_manager;
+    public GameObject c_light;
 
     private bool moving = false;
 
@@ -36,6 +37,9 @@ public class Player_Movement : MonoBehaviour
         //positions[2,0] = new Vector2(-1.5f, -4 + 1.5f);//C1
         //positions[2,1] = new Vector2(0, -4 + 1.5f);//C2
         //positions[2,2] = new Vector2(1.5f, -4 + 1.5f);//C3
+
+        c_light.SetActive(false);
+        StartCoroutine(TempoLight());
 
  
         positions[0, 0] = basePositions[0].position;
@@ -389,6 +393,11 @@ public class Player_Movement : MonoBehaviour
         Destroy(particles, 1f);
     }
 
+    IEnumerator TempoLight()
+    {
+        yield return new WaitForSeconds(1f);
+        c_light.SetActive(true);
+    }
 
 
 }

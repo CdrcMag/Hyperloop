@@ -129,6 +129,7 @@ MonoBehaviour:
   follower: {fileID: 0}
   mScore: {fileID: 0}
   explosionPrefab: {fileID: 6412644439268659575, guid: cd17a2ea75cbd82459b4b44f51ef820b, type: 3}
+  explosionPrefabColored: {fileID: 0}
   basePositions:
   - {fileID: 0}
   - {fileID: 0}
@@ -140,6 +141,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   movingParticles: {fileID: 0}
+  scene_manager: {fileID: 0}
+  c_light: {fileID: 7404743470093730229}
   currentPositionX: 1
   currentPositionY: 1
   timer: 0.06

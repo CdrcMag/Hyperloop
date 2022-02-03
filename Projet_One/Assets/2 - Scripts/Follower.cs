@@ -11,12 +11,14 @@ public class Follower : MonoBehaviour
     public Color32 currentColor;
 
     private SpriteRenderer playerRenderer;
+    private TrailRenderer trail;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
         playerRenderer = player.GetComponent<SpriteRenderer>();
+        trail = player.GetChild(0).GetComponent<TrailRenderer>();
     }
 
     private void Update()
@@ -29,7 +31,7 @@ public class Follower : MonoBehaviour
         if(collision.tag == "Fix")
         {
             currentColor = collision.GetComponent<SpriteRenderer>().color;
-            //SetPlayerColor(currentColor);
+            SetPlayerColor(currentColor);
 
             if(collision.GetComponent<Animator>() != null)
                 collision.GetComponent<Animator>().SetTrigger("Turn");
@@ -39,5 +41,17 @@ public class Follower : MonoBehaviour
     private void SetPlayerColor(Color32 c)
     {
         playerRenderer.color = currentColor;
+
+        Gradient grad = new Gradient();
+        grad.SetKeys(
+            new GradientColorKey[]
+              {
+                      new GradientColorKey(c, 0.0f),
+                      new GradientColorKey(c, 1.0f) },
+              new GradientAlphaKey[] {
+                      new GradientAlphaKey(1.0f, 0.0f)
+              });
+
+        trail.colorGradient = grad;
     }
 }

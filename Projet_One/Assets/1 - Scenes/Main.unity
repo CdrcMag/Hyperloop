@@ -3915,7 +3915,7 @@ PrefabInstance:
     - target: {fileID: 6835734131034183973, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 06d93d006a1385a42af78749ba4b16c8, type: 3}
+      objectReference: {fileID: 21300000, guid: 6cd3a72688619a84097bdd2342858745, type: 3}
     - target: {fileID: 6835734131034183973, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -3929,14 +3929,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6835734131034183975, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
-      propertyPath: speed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6835734131034183975, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
-      propertyPath: timer
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 6835734131034183975, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: mScore
       value: 
       objectReference: {fileID: 2042074806}
@@ -3948,14 +3940,6 @@ PrefabInstance:
       propertyPath: scene_manager
       value: 
       objectReference: {fileID: 2042074803}
-    - target: {fileID: 6835734131034183975, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
-      propertyPath: movingParticles
-      value: 
-      objectReference: {fileID: 990719755452375570, guid: 2f94e17f49aa0e3439199604e3b1db0e, type: 3}
-    - target: {fileID: 6835734131034183975, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
-      propertyPath: explosionPrefabColored
-      value: 
-      objectReference: {fileID: 8078770144843820497, guid: 6314a71ccef77ac4a8a50878fd80d51f, type: 3}
     - target: {fileID: 6835734131034183975, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: basePositions.Array.data[0]
       value: 

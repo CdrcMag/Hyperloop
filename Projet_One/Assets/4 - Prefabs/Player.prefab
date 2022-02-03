@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 1f2e63fd90df31045987a6196baace3a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cd3a72688619a84097bdd2342858745, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
+    oldSize: {x: 8, y: 8}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,12 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc1c061426f8d54b96846b88c38ac82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 25
   trail: {fileID: 6835734132379976103}
   follower: {fileID: 0}
   mScore: {fileID: 0}
   explosionPrefab: {fileID: 6412644439268659575, guid: cd17a2ea75cbd82459b4b44f51ef820b, type: 3}
-  explosionPrefabColored: {fileID: 0}
+  explosionPrefabColored: {fileID: 8078770144843820497, guid: 6314a71ccef77ac4a8a50878fd80d51f, type: 3}
   basePositions:
   - {fileID: 0}
   - {fileID: 0}
@@ -140,12 +140,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  movingParticles: {fileID: 0}
+  movingParticles: {fileID: 990719755452375570, guid: 2f94e17f49aa0e3439199604e3b1db0e, type: 3}
   scene_manager: {fileID: 0}
   c_light: {fileID: 7404743470093730229}
   currentPositionX: 1
   currentPositionY: 1
-  timer: 0.06
+  timer: 0.03
 --- !u!1 &6835734132379976103
 GameObject:
   m_ObjectHideFlags: 0

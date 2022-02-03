@@ -297,7 +297,8 @@ public class Player_Movement : MonoBehaviour
 
                 //Changes background color
                 ColorChanger.Instance.ChangeColor();
-                
+
+                LensDistortionChanger.Instance.ChangeLens(1);
 
             }
         }
@@ -340,7 +341,10 @@ public class Player_Movement : MonoBehaviour
 
             //Add score
             mScore.AddOneShotScore(1000);
-            
+
+            //Impact with lense
+            LensDistortionChanger.Instance.ChangeLens(3);
+
         }
     }
 

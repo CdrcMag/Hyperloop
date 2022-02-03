@@ -76,6 +76,13 @@ public class Manager_Score : MonoBehaviour
         tScore.text = score.ToString();
     }
 
+    public void AddMovingScore(int val)
+    {
+        score += val;
+        PopUp(val);
+        tScore.text = score.ToString();
+    }
+
     IEnumerator ISizeText()
     {
         float targetSize = 140;

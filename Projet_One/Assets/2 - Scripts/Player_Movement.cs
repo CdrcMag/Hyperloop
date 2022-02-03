@@ -18,6 +18,7 @@ public class Player_Movement : MonoBehaviour
     public GameObject movingParticles;
     public Scene_Manager_1 scene_manager;
     public GameObject c_light;
+    public Transform fallerParent;
 
     private bool moving = false;
 
@@ -174,20 +175,20 @@ public class Player_Movement : MonoBehaviour
 
     private void HandleKeyboardInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && currentPositionY > 0)
+        if (Input.GetKeyDown(KeyCode.Z) && currentPositionY > 0 && !moving)
         {
             SpawnMovingParticles(Sens.Haut);
             currentPositionY -= 1;
             StartCoroutine(IMove());
         }
-        if (Input.GetKeyDown(KeyCode.S) && currentPositionY < 2)
+        if (Input.GetKeyDown(KeyCode.S) && currentPositionY < 2 && !moving)
         {
             SpawnMovingParticles(Sens.Bas);
             currentPositionY += 1;
             StartCoroutine(IMove());
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !moving)
         {
             SpawnMovingParticles(Sens.Gauche);
 
@@ -204,7 +205,7 @@ public class Player_Movement : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && !moving)
         {
             SpawnMovingParticles(Sens.Droite);
 
@@ -224,6 +225,8 @@ public class Player_Movement : MonoBehaviour
 
     IEnumerator IMove()
     {
+        mScore.AddMovingScore(5);
+
         moving = true;
 
         Vector2 target = positions[currentPositionY, currentPositionX];
@@ -249,6 +252,7 @@ public class Player_Movement : MonoBehaviour
         Vector2 target1 = new Vector2(x+sens, y);
         Vector2 target2 = new Vector2(x-sens, y);
         Vector2 finalTarget = positions[currentPositionY, currentPositionX];
+        
 
         bool a = true;
 
@@ -271,6 +275,12 @@ public class Player_Movement : MonoBehaviour
         }
 
         moving = false;
+    }
+
+    IEnumerator ResetPosition(Vector2 pos)
+    {
+        yield return new WaitForSeconds(1f);
+        transform.position = pos;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -344,6 +354,9 @@ public class Player_Movement : MonoBehaviour
 
             //Impact with lense
             LensDistortionChanger.Instance.ChangeLens(3);
+
+            //Destroys every object spawned
+            foreach (Transform t in fallerParent) Destroy(t.gameObject);
 
         }
     }

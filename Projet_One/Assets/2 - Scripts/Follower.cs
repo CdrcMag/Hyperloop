@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Follower : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Follower : MonoBehaviour
 
     private SpriteRenderer playerRenderer;
     private TrailRenderer trail;
+    private Light2D pLight;
+    
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class Follower : MonoBehaviour
 
         playerRenderer = player.GetComponent<SpriteRenderer>();
         trail = player.GetChild(0).GetComponent<TrailRenderer>();
+        pLight = player.GetChild(1).GetComponent<Light2D>();
     }
 
     private void Update()
@@ -53,5 +57,7 @@ public class Follower : MonoBehaviour
               });
 
         trail.colorGradient = grad;
+
+        //pLight.color = c;
     }
 }

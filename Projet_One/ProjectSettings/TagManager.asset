@@ -8,6 +8,7 @@ TagManager:
   - Fix
   - Healer
   - ColorChanger
+  - Destroyer
   layers:
   - Default
   - TransparentFX

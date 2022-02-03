@@ -11,6 +11,7 @@ public class Scene_Manager_1 : MonoBehaviour
     [Header("Faller colors")]
     public Color32 healerColor;
     public Color32 colorChangerColor;
+    public Color32 colorDestroyer;
 
     private float cpt = 0;
     
@@ -22,6 +23,7 @@ public class Scene_Manager_1 : MonoBehaviour
     public GameObject objPrefab;
     public GameObject healerPrefab;
     public GameObject colorChangerPrefab;
+    public GameObject destroyerPrefab;
 
     [Header("Settings")]
     public bool spawning = true;
@@ -31,6 +33,7 @@ public class Scene_Manager_1 : MonoBehaviour
     [Header("Chances")]
     public int chanceToSpawnHealer = 1;
     public int chanceToColorChanger = 1;
+    public int chanceToDestroyer = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,7 @@ public class Scene_Manager_1 : MonoBehaviour
         List<int> chances = new List<int>();
         chances.Add(chanceToSpawnHealer);
         chances.Add(chanceToColorChanger);
+        chances.Add(chanceToDestroyer);
         
         //Ordonne la liste de façon croissante
         chances.Sort();
@@ -73,19 +77,23 @@ public class Scene_Manager_1 : MonoBehaviour
         {
             if(rand <= chances[chances.Count-2])
             {
-                //if (rand <= chances[chances.Count - 3])
-                //{
-
-                //}
-                //else
+                if (rand <= chances[chances.Count - 3])
+                {
+                    if (chances[chances.Count - 3] == chanceToSpawnHealer) Spawn_Healer();
+                    if (chances[chances.Count - 3] == chanceToColorChanger) Spawn_ColorChanger();
+                    if (chances[chances.Count - 3] == chanceToDestroyer) Spawn_Destroyer();
+                }
+                
                 if (chances[chances.Count - 2] == chanceToSpawnHealer) Spawn_Healer();
                 if (chances[chances.Count - 2] == chanceToColorChanger) Spawn_ColorChanger();
+                if (chances[chances.Count - 2] == chanceToDestroyer) Spawn_Destroyer();
                 
             }
             else
             {
                 if (chances[chances.Count - 1] == chanceToSpawnHealer) Spawn_Healer();
                 if (chances[chances.Count - 1] == chanceToColorChanger) Spawn_ColorChanger();
+                if (chances[chances.Count - 1] == chanceToDestroyer) Spawn_Destroyer();
             }            
         }
         else
@@ -136,6 +144,13 @@ public class Scene_Manager_1 : MonoBehaviour
 
     }
 
+    private void Spawn_Destroyer()
+    {
+        GameObject a;
+        a = Instantiate(destroyerPrefab, spawnPositions[Random.Range(0, 3)], Quaternion.identity, objects);
+        //a.GetComponent<Faller>().speed = fallerSpeed * 1.5f;
+        a.GetComponent<SpriteRenderer>().color = colorDestroyer;
+    }
 
 
     [Header("Grille de déplacement")]

@@ -30,7 +30,6 @@ public class Health : MonoBehaviour
 
     public void RemoveHealth(int val)
     {
-        CameraShake.Instance.Shake(0.2f, 0.6f);
         vie -= val;
         UpdateHealthBar();
     }
@@ -69,6 +68,7 @@ public class Health : MonoBehaviour
     {
         GetComponent<Scene_Manager_1>().spawning = false;
         Transition2.Instance.Augment();
+        GameObject.Find("Player").GetComponent<Player_Movement>().enabled = false;
 
         Destroy(objects.gameObject);
         StartCoroutine(ILoadScene());

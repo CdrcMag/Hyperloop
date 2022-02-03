@@ -1382,6 +1382,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2088016590277058100, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
   m_PrefabInstance: {fileID: 2088016591479411072}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1528374582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6835734131034183971, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
+  m_PrefabInstance: {fileID: 6835734130762124481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1528374583
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528374582}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0622860792cb99949a3837435b8900e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1539933786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1972,15 +1996,20 @@ MonoBehaviour:
   colorChangerColor:
     serializedVersion: 2
     rgba: 4279689422
+  colorDestroyer:
+    serializedVersion: 2
+    rgba: 4284177243
   objects: {fileID: 597481872}
   objPrefab: {fileID: 542015768644212276, guid: 7ed177699631c7c419cc3b9731e60d2e, type: 3}
   healerPrefab: {fileID: 542015768644212276, guid: 1aa3cb32ea298a54d870611a34380f9b, type: 3}
   colorChangerPrefab: {fileID: 542015768644212276, guid: d1496594ef9ba9d4bb5d1c1a13bc6c25, type: 3}
+  destroyerPrefab: {fileID: 542015768644212276, guid: 616803cd111b2ff49a8a600c5603c14d, type: 3}
   spawning: 1
   timeBetweenSpawns: 1.5
   fallerSpeed: 3
-  chanceToSpawnHealer: 5
+  chanceToSpawnHealer: 6
   chanceToColorChanger: 5
+  chanceToDestroyer: 4
   carres:
   - {fileID: 183557378}
   - {fileID: 724670075}
@@ -3354,6 +3383,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1248220106218148165, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400178471338090449, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927553287851651344, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2088016589538876024, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -3726,6 +3767,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2088016591654505602, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088016591654505602, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088016591654505602, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088016591654505602, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088016591654505602, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2088016591654505603, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
       propertyPath: m_Color.b
       value: 0.8
@@ -3777,6 +3838,30 @@ PrefabInstance:
     - target: {fileID: 2088016591654661408, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2467784490030417611, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569803605483518600, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189867243362533289, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917319021073578575, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023720692447738827, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842733546366090920, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
@@ -3870,7 +3955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6835734131034183972, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.04
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6835734131034183972, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3944,6 +4029,10 @@ PrefabInstance:
       propertyPath: scene_manager
       value: 
       objectReference: {fileID: 2042074803}
+    - target: {fileID: 6835734131034183975, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
+      propertyPath: destroyerParticlesPrefab
+      value: 
+      objectReference: {fileID: 8282900223651590800, guid: 2b4fbf13217b5e74e8213f4df52d278c, type: 3}
     - target: {fileID: 6835734131034183975, guid: 5836fc9969595d0428d5a208709125d6, type: 3}
       propertyPath: basePositions.Array.data[0]
       value: 

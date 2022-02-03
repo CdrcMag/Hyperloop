@@ -14,6 +14,7 @@ public class Player_Movement : MonoBehaviour
     public Manager_Score mScore;
     public GameObject explosionPrefab;
     public GameObject explosionPrefabColored;
+    public GameObject destroyerParticlesPrefab;
     public List<Transform> basePositions;
     public GameObject movingParticles;
     public Scene_Manager_1 scene_manager;
@@ -225,7 +226,8 @@ public class Player_Movement : MonoBehaviour
 
     IEnumerator IMove()
     {
-        mScore.AddMovingScore(5);
+        if(mScore)
+            mScore.AddMovingScore(5);
 
         moving = true;
 
@@ -285,9 +287,9 @@ public class Player_Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Fall")
+        if (collision.tag == "Fall")
         {
-            if(collision.GetComponent<SpriteRenderer>().color == follower.currentColor)
+            if (collision.GetComponent<SpriteRenderer>().color == follower.currentColor)
             {
                 //Destroys other object
                 Destroy(collision.gameObject);
@@ -313,7 +315,7 @@ public class Player_Movement : MonoBehaviour
             }
         }
 
-        if(collision.tag == "Healer")
+        if (collision.tag == "Healer")
         {
             //Destroys other object
             Destroy(collision.gameObject);
@@ -328,11 +330,11 @@ public class Player_Movement : MonoBehaviour
             SpawnFunkyParticles();
 
             //Changes background color
-            if(ColorChanger.Instance) ColorChanger.Instance.ChangeColor();
+            if (ColorChanger.Instance) ColorChanger.Instance.ChangeColor();
 
         }
 
-        if(collision.tag == "ColorChanger")
+        if (collision.tag == "ColorChanger")
         {
             //Destroys other object
             Destroy(collision.gameObject);
@@ -357,6 +359,21 @@ public class Player_Movement : MonoBehaviour
 
             //Destroys every object spawned
             foreach (Transform t in fallerParent) Destroy(t.gameObject);
+
+        }
+
+        if (collision.tag == "Destroyer")
+        {
+            //Destroys the destroyer (yes, i know)
+            Destroy(collision.gameObject);
+
+            //Removes one point of health
+            Health.Instance.RemoveHealth(1);
+
+            CameraShake.Instance.Shake(.1f, 1);
+
+            GameObject a = Instantiate(destroyerParticlesPrefab, transform.position, Quaternion.identity);
+            Destroy(a, 5f);
 
         }
     }

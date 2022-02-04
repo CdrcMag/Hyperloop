@@ -16,6 +16,7 @@ public class Manager_Audio : MonoBehaviour
     }
 
     public AudioClip[] fx;
+    public AudioClip[] fx_movement;
 
     public void PlayFx(int id, float volume = 1f)
     {
@@ -23,6 +24,10 @@ public class Manager_Audio : MonoBehaviour
         _audioSource.PlayOneShot(fx[id]);
     }
 
+    public void PlayFxMovement(float volume = 1)
+    {
+        _audioSource.PlayOneShot(fx_movement[Random.Range(0, fx_movement.Length)], volume);
+    }
 
 
 

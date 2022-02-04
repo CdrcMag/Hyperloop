@@ -130,6 +130,7 @@ MonoBehaviour:
   mScore: {fileID: 0}
   explosionPrefab: {fileID: 6412644439268659575, guid: cd17a2ea75cbd82459b4b44f51ef820b, type: 3}
   explosionPrefabColored: {fileID: 8078770144843820497, guid: 6314a71ccef77ac4a8a50878fd80d51f, type: 3}
+  destroyerParticlesPrefab: {fileID: 8282900223651590800, guid: 2b4fbf13217b5e74e8213f4df52d278c, type: 3}
   basePositions:
   - {fileID: 0}
   - {fileID: 0}
@@ -143,6 +144,7 @@ MonoBehaviour:
   movingParticles: {fileID: 990719755452375570, guid: 2f94e17f49aa0e3439199604e3b1db0e, type: 3}
   scene_manager: {fileID: 0}
   c_light: {fileID: 7404743470093730229}
+  fallerParent: {fileID: 0}
   currentPositionX: 1
   currentPositionY: 1
   timer: 0.03

@@ -118,6 +118,7 @@ public class Player_Movement : MonoBehaviour
                 if (direction.x < 0 && direction.y > -0.5f && direction.y < 0.5f)
                 {
                     currentPositionX -= 1;
+                    SpawnMovingParticles(Sens.Gauche);
                     if (currentPositionX == -1)
                     {
                         currentPositionX = 2;
@@ -132,6 +133,7 @@ public class Player_Movement : MonoBehaviour
                 //Droite
                 if (direction.x > 0 && direction.y > -0.5f && direction.y < 0.5f)
                 {
+                    SpawnMovingParticles(Sens.Droite);
                     currentPositionX += 1;
                     if (currentPositionX == 3)
                     {
@@ -149,6 +151,7 @@ public class Player_Movement : MonoBehaviour
                 {
                     if(currentPositionY < 2)
                     {
+                        SpawnMovingParticles(Sens.Bas);
                         currentPositionY += 1;
                         StartCoroutine(IMove());
                     }
@@ -160,6 +163,7 @@ public class Player_Movement : MonoBehaviour
                 {
                     if(currentPositionY > 0)
                     {
+                        SpawnMovingParticles(Sens.Haut);
                         currentPositionY -= 1;
                         StartCoroutine(IMove());
                     }
@@ -228,6 +232,8 @@ public class Player_Movement : MonoBehaviour
     {
         if(mScore)
             mScore.AddMovingScore(5);
+
+        Manager_Audio.Instance.PlayFxMovement();
 
         moving = true;
 
@@ -298,9 +304,6 @@ public class Player_Movement : MonoBehaviour
                 mScore.AddInARow(1);
                 mScore.AddScore();
 
-                //Sound
-                Manager_Audio.Instance.PlayFx(0, 1);
-
                 //Particles
                 SpawnFunkyParticles();
 
@@ -311,6 +314,8 @@ public class Player_Movement : MonoBehaviour
                 ColorChanger.Instance.ChangeColor();
 
                 LensDistortionChanger.Instance.ChangeLens(1);
+
+                Manager_Audio.Instance.PlayFx(0);
 
             }
         }

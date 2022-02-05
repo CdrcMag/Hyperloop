@@ -35,13 +35,45 @@ public class Scene_Manager_1 : MonoBehaviour
     public int chanceToColorChanger = 1;
     public int chanceToDestroyer = 1;
 
+    [Header("Difficulty settings")]
+    public float timeToSpawnHealer;
+    public float timeToSpawnDestroyer;
+    public float timeToSpawnColorChanger;
+
+    public bool canSpawnHealer = false;
+    public bool canSpawnDestroyer = false;
+    public bool canSpawnColorChanger = false;
+   
+
     // Start is called before the first frame update
     void Start()
     {
         spawnPositions[0] = new Vector2(-1.5f, 6);
         spawnPositions[1] = new Vector2(0, 6);
         spawnPositions[2] = new Vector2(1.5f, 6);
+
+        StartCoroutine(WaitToIncreaseDifficulty(timeToSpawnHealer, 0));
+        StartCoroutine(WaitToIncreaseDifficulty(timeToSpawnDestroyer, 1));
+        StartCoroutine(WaitToIncreaseDifficulty(timeToSpawnColorChanger, 2));
         
+    }
+
+    private IEnumerator WaitToIncreaseDifficulty(float t, int num)
+    {
+        yield return new WaitForSeconds(t);
+        
+        switch(num)
+        {
+            case 0:
+                canSpawnHealer = true;
+                break;
+            case 1:
+                canSpawnDestroyer = true;
+                break;
+            case 2:
+                canSpawnColorChanger = true;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -65,10 +97,10 @@ public class Scene_Manager_1 : MonoBehaviour
         
         //Ajoute toutes les variables de chances d'apparition dans une liste
         List<int> chances = new List<int>();
-        chances.Add(chanceToSpawnHealer);
-        chances.Add(chanceToColorChanger);
-        chances.Add(chanceToDestroyer);
-        
+        if (canSpawnHealer) chances.Add(chanceToSpawnHealer); else { chances.Add(0); }
+        if (canSpawnColorChanger) chances.Add(chanceToColorChanger); else { chances.Add(0); }
+        if (canSpawnDestroyer) chances.Add(chanceToDestroyer); else { chances.Add(0); }
+
         //Ordonne la liste de façon croissante
         chances.Sort();
 

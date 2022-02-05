@@ -288,6 +288,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 8069060988700335927, guid: faf020331df498144b62ad04eb5e92b7, type: 3}
+      propertyPath: m_Color.b
+      value: 0.13972943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069060988700335927, guid: faf020331df498144b62ad04eb5e92b7, type: 3}
+      propertyPath: m_Color.g
+      value: 0.14037418
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069060988700335927, guid: faf020331df498144b62ad04eb5e92b7, type: 3}
+      propertyPath: m_Color.r
+      value: 0.18867922
+      objectReference: {fileID: 0}
     - target: {fileID: 8069060988700335928, guid: faf020331df498144b62ad04eb5e92b7, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2007,9 +2019,15 @@ MonoBehaviour:
   spawning: 1
   timeBetweenSpawns: 1.5
   fallerSpeed: 3
-  chanceToSpawnHealer: 6
-  chanceToColorChanger: 5
-  chanceToDestroyer: 4
+  chanceToSpawnHealer: 3
+  chanceToColorChanger: 10
+  chanceToDestroyer: 15
+  timeToSpawnHealer: 10
+  timeToSpawnDestroyer: 20
+  timeToSpawnColorChanger: 30
+  canSpawnHealer: 0
+  canSpawnDestroyer: 0
+  canSpawnColorChanger: 0
   carres:
   - {fileID: 183557378}
   - {fileID: 724670075}

@@ -357,7 +357,7 @@ public class Player_Movement : MonoBehaviour
             scene_manager.SetCarresColors();
 
             //Add score
-            mScore.AddOneShotScore(1000);
+            mScore.AddOneShotScore(5000);
 
             //Impact with lense
             LensDistortionChanger.Instance.ChangeLens(3);

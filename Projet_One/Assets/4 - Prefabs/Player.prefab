@@ -147,7 +147,7 @@ MonoBehaviour:
   fallerParent: {fileID: 0}
   currentPositionX: 1
   currentPositionY: 1
-  timer: 0.03
+  timer: 0.04
 --- !u!1 &6835734132379976103
 GameObject:
   m_ObjectHideFlags: 0

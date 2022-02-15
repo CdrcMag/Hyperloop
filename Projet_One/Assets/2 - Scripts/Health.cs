@@ -30,6 +30,7 @@ public class Health : MonoBehaviour
 
     public void RemoveHealth(int val)
     {
+
         vie -= val;
         UpdateHealthBar();
     }

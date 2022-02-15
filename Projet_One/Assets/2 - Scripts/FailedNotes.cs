@@ -16,6 +16,8 @@ public class FailedNotes : MonoBehaviour
             FailedNote();
             GameObject i = Instantiate(exploPrefab, collision.transform.position, Quaternion.identity);
             Health.Instance.RemoveHealth(1);
+            Manager_Audio.Instance.PlayFx(1);
+            CameraShake.Instance.Shake(0.2f, 1);
             Destroy(i, 5f);
         }
             

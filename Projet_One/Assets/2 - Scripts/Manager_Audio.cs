@@ -26,7 +26,7 @@ public class Manager_Audio : MonoBehaviour
     public void PlayFx(int id, float volume = 1f)
     {
         //_audioSource.pitch = .2f;
-        _audioSource.PlayOneShot(fx[id]);
+        _audioSource.PlayOneShot(fx[id], volume);
     }
 
     public void PlayFxMovement(float volume = 1)

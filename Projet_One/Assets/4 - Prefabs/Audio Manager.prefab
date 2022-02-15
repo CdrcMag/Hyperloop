@@ -141,9 +141,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fx:
-  - {fileID: 8300000, guid: 0f7afc7e3ec6d744a87b27ba9fa4e14d, type: 3}
+  - {fileID: 8300000, guid: ac877af9d62e9dc4f89bffcac7d9db01, type: 3}
+  - {fileID: 8300000, guid: 979aa9a0276cdc44f8cf8a80f97d6e39, type: 3}
+  - {fileID: 8300000, guid: 734bc0c8f6ac96048a78dc93e2498e69, type: 3}
   fx_movement:
+  - {fileID: 8300000, guid: 6ac9a8b0beeb5d04a832771d9bbae199, type: 3}
   - {fileID: 8300000, guid: 0f7afc7e3ec6d744a87b27ba9fa4e14d, type: 3}
+  - {fileID: 8300000, guid: 50c02443a47260d49bf1fbbe36ac84f6, type: 3}
   OnText: {fileID: 0}
   OffText: {fileID: 0}
   img: {fileID: 0}

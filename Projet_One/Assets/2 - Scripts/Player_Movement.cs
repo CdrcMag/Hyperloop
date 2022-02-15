@@ -233,7 +233,7 @@ public class Player_Movement : MonoBehaviour
         if(mScore)
             mScore.AddMovingScore(5);
 
-        Manager_Audio.Instance.PlayFxMovement();
+        Manager_Audio.Instance.PlayFxMovement(0.5f);
 
         moving = true;
 
@@ -315,7 +315,7 @@ public class Player_Movement : MonoBehaviour
 
                 LensDistortionChanger.Instance.ChangeLens(1);
 
-                Manager_Audio.Instance.PlayFx(0);
+                Manager_Audio.Instance.PlayFx(0, 0.15f);
 
             }
         }
@@ -336,6 +336,8 @@ public class Player_Movement : MonoBehaviour
 
             //Changes background color
             if (ColorChanger.Instance) ColorChanger.Instance.ChangeColor();
+
+            Manager_Audio.Instance.PlayFx(2, 0.4f);
 
         }
 
@@ -365,6 +367,9 @@ public class Player_Movement : MonoBehaviour
             //Destroys every object spawned
             foreach (Transform t in fallerParent) Destroy(t.gameObject);
 
+            Manager_Audio.Instance.PlayFx(3, 0.2f);
+
+
         }
 
         if (collision.tag == "Destroyer")
@@ -374,6 +379,8 @@ public class Player_Movement : MonoBehaviour
 
             //Removes one point of health
             Health.Instance.RemoveHealth(1);
+
+            Manager_Audio.Instance.PlayFx(1);
 
             CameraShake.Instance.Shake(.1f, 1);
 

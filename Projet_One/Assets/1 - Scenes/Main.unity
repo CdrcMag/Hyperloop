@@ -1912,6 +1912,18 @@ PrefabInstance:
       propertyPath: OffText
       value: 
       objectReference: {fileID: 1195347484}
+    - target: {fileID: 397333383125515647, guid: e9baad51b65f0504f86e5d3ac2285bec, type: 3}
+      propertyPath: fx.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 397333383125515647, guid: e9baad51b65f0504f86e5d3ac2285bec, type: 3}
+      propertyPath: fx.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: a014b63207ba6d04c8765e4d962578b6, type: 3}
+    - target: {fileID: 397333383125515647, guid: e9baad51b65f0504f86e5d3ac2285bec, type: 3}
+      propertyPath: fx.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b3f77c56b6303040964d3c1512bd01b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9baad51b65f0504f86e5d3ac2285bec, type: 3}
 --- !u!224 &1701474502 stripped
@@ -2246,8 +2258,8 @@ MonoBehaviour:
   chanceToSpawnHealer: 3
   chanceToColorChanger: 10
   chanceToDestroyer: 15
-  timeToSpawnHealer: 10
-  timeToSpawnDestroyer: 20
+  timeToSpawnHealer: 5
+  timeToSpawnDestroyer: 12
   timeToSpawnColorChanger: 30
   canSpawnHealer: 0
   canSpawnDestroyer: 0
@@ -3569,7 +3581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2088016590190552545, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2088016590190552546, guid: a8bee88c2e295ac4db2141c274018021, type: 3}
       propertyPath: m_LocalPosition.y
